@@ -11,3 +11,9 @@ View tasks
 cout << "1  Title      : " << title << endl
      << "   Description: " << description << endl
      << "   Due Date   : " << time << endl
+
+TODO (if else):
+validate date
+- Day: 30 or 31, 28 or 29
+- Month: in range 1-12
+- Year: four digits
