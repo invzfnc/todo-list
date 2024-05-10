@@ -1,0 +1,13 @@
+clear on each command Add task
+
+cout << "Enter task details   : " << endl
+     << "Title                : " << title << endl
+     << "Description          : " << description << endl
+     << "Due Date (YYYY-MM-DD): " << time << endl << endl
+     << "Task added successfully. ";
+
+View tasks
+
+cout << "1  Title      : " << title << endl
+     << "   Description: " << description << endl
+     << "   Due Date   : " << time << endl
