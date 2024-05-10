@@ -9,9 +9,7 @@ void edit();
 void remove();
 
 struct TodoItem {
-    string title;
-    string description;
-    string due_date;
+    string title, description, due_date;
 };
 
 int main() 
