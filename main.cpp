@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int mian() {
+int main() {
     
 
     return 0;
