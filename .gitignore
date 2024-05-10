@@ -1,0 +1,25 @@
+# executables
+*.exe
+*.o
+
+# vscode configuration files
+.vscode/
+
+# vim files
+Session.vim
+*.swp
+
+# Obsidian configuration files
+.obsidian
+
+# debug folder
+Debug/
+
+# tests
+tests/
+
+# misc
+ignore/
+
+# test csv
+test.csv
