@@ -35,30 +35,55 @@ int main()
         cout << "Please enter a number within range 1-6: ";
     }
 
+    cout << endl;
+    system("cls");
+    switch (command)
+    {
+        case 1:
+            add();
+            break;
+        case 2:
+            view();
+            break;
+        case 3:
+            mark();
+            break;
+        case 4:
+            edit();
+            break;
+        case 5:
+            remove();
+            break;
+    }
+
     return 0;
 }
 
 void add()
 {
-
+    cout << "Add" << endl;
 }
 
 void view()
 {
+    cout << "View" << endl;
 
 }
 
 void mark()
 {
+    cout << "Mark" << endl;
 
 }
 
 void edit()
 {
+    cout << "Edit" << endl;
 
 }
 
 void remove()
 {
+    cout << "Remove" << endl;
 
 }
