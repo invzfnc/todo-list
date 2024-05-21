@@ -3,6 +3,8 @@
 #include <vector>
 #include <regex>
 
+using namespace std;
+
 // Platform specific commands
 #ifdef __MINGW32__ // Windows
     #define CLEAR_SCREEN "cls"
@@ -10,9 +12,18 @@
     #define CLEAR_SCREEN "clear"
 #endif
 
+// Path to save file
 #define DATA_PATH "./save.csv"
 
-using namespace std;
+// Single item unit
+struct TodoItem {
+    string title;
+    string description;
+    string due_date;
+};
+
+// List containing item units
+typedef vector<TodoItem> TodoItems;
 
 // Commands function declarations
 void add();
@@ -23,15 +34,10 @@ void remove();
 
 // File IO function declarations
 void save_data();
-vector<TodoItem> retrieve_data();
+TodoItems retrieve_data();
 
-struct TodoItem {
-    string title;
-    string description;
-    string due_date;
-};
-
-vector<TodoItem> todo_items;
+// Global storage object
+TodoItems todo_items;
 
 int main() 
 {
