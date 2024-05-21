@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 // Platform specific commands
 #ifdef __MINGW32__ // Windows
@@ -20,6 +21,8 @@ struct TodoItem {
     string description;
     string due_date;
 };
+
+vector<TodoItem> todo_items;
 
 int main() 
 {
