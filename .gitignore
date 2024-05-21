@@ -1,6 +1,7 @@
 # executables
 *.exe
 *.o
+*.out
 
 # vscode configuration files
 .vscode/
