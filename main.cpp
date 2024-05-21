@@ -1,5 +1,7 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
+#include <regex>
 
 // Platform specific commands
 #ifdef __MINGW32__ // Windows
@@ -8,13 +10,20 @@
     #define CLEAR_SCREEN "clear"
 #endif
 
+#define DATA_PATH "./save.csv"
+
 using namespace std;
 
+// Commands function declarations
 void add();
 void view();
 void mark();
 void edit();
 void remove();
+
+// File IO function declarations
+void save_data();
+vector<TodoItem> retrieve_data();
 
 struct TodoItem {
     string title;
