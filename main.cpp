@@ -1,5 +1,12 @@
 #include <iostream>
 
+// Platform specific commands
+#ifdef __MINGW32__ // Windows
+    #define CLEAR_SCREEN "cls"
+#else // Linux or MacOS
+    #define CLEAR_SCREEN "clear"
+#endif
+
 using namespace std;
 
 void add();
@@ -36,7 +43,7 @@ int main()
     }
 
     cout << endl;
-    system("cls");
+    system(CLEAR_SCREEN);
     switch (command)
     {
         case 1:
