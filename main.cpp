@@ -112,3 +112,45 @@ void remove()
     cout << "Remove" << endl;
 
 }
+
+void save_data()
+{
+    ofstream fout;
+
+    fout.open(DATA_PATH, ios::out | ios::app);
+
+    for (const auto &item : todo_items)
+    {
+        fout << "\"" << item.title << "\","
+            << "\"" << item.description << "\","
+            << "\"" << item.due_date << "\""
+            << endl;
+    }
+
+    fout.close();
+}
+
+TodoItems retrieve_data()
+{
+    TodoItem item;
+    TodoItems items;
+
+    ifstream file(DATA_PATH);
+    string line;
+
+    regex pattern("\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\"");
+    smatch matches;
+
+    while (getline(file, line))
+    {
+        regex_search(line, matches, pattern);
+        item.title = matches.str(1);
+        item.description = matches.str(2);
+        item.due_date = matches.str(3);
+        items.push_back(item);
+    }
+
+    file.close();
+
+    return items;
+}
