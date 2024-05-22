@@ -44,6 +44,7 @@ TodoItems todo_items;
 int main() 
 {
     char command;
+    todo_items = retrieve_data();
 
     while (true)
     {
@@ -91,6 +92,8 @@ int main()
                 save_data();
                 return 0;
         }
+
+        cout << "\n---\n" << endl;
     }
 }
 
@@ -101,8 +104,14 @@ void add()
 
 void view()
 {
-    cout << "View" << endl;
-
+    cout << "All Tasks" << endl;
+    for (const auto &item : todo_items)
+    {
+        cout << endl;
+        cout << "Title: " << item.title << endl;
+        cout << "Desc: " << item.description << endl;
+        cout << "Due Date: " << item.due_date << endl;
+    }
 }
 
 void mark()
@@ -127,7 +136,7 @@ void save_data()
 {
     ofstream fout;
 
-    fout.open(DATA_PATH, ios::out | ios::app);
+    fout.open(DATA_PATH, ios::out);
 
     for (const auto &item : todo_items)
     {
