@@ -22,5 +22,5 @@ tests/
 # misc
 ignore/
 
-# test csv
-test.csv
+# csv files
+*.csv
