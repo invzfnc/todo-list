@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <climits>
 #include <vector>
 #include <regex>
 
@@ -25,14 +26,15 @@ struct TodoItem {
 // List containing item units
 typedef vector<TodoItem> TodoItems;
 
-// Commands function declarations
+// Function declarations
+// Commands functions
 void add();
 void view();
 void mark();
 void edit();
 void remove();
 
-// File IO function declarations
+// File IO functions
 void save_data();
 TodoItems retrieve_data();
 
@@ -41,47 +43,55 @@ TodoItems todo_items;
 
 int main() 
 {
-    int command;
-
-    cout << "1. Add Task" << endl;
-    cout << "2. View Tasks" << endl;
-    cout << "3. Mark Task as Completed" << endl;
-    cout << "4. Edit Task" << endl;
-    cout << "5. Delete Task" << endl;
-    cout << "6. Exit" << endl << endl;
-
-    cout << "Enter a number 1-6: ";
+    char command;
 
     while (true)
     {
-        cin >> command;
-        if (command >= 1 && command <= 6)
-            break;
-        cout << "Please enter a number within range 1-6: ";
-    }
+        // Instructions
+        cout << "1. Add Task" << endl;
+        cout << "2. View Tasks" << endl;
+        cout << "3. Mark Task as Completed" << endl;
+        cout << "4. Edit Task" << endl;
+        cout << "5. Delete Task" << endl;
+        cout << "6. Exit" << endl << endl;
 
-    cout << endl;
-    system(CLEAR_SCREEN);
-    switch (command)
-    {
-        case 1:
-            add();
-            break;
-        case 2:
-            view();
-            break;
-        case 3:
-            mark();
-            break;
-        case 4:
-            edit();
-            break;
-        case 5:
-            remove();
-            break;
-    }
+        cout << "Enter a number 1-6: ";
 
-    return 0;
+        while (true)
+        {
+            cin >> command;
+            cin.ignore(INT_MAX, '\n'); // Flush stdin stream
+            if (command >= '1' && command <= '6')
+                break;
+            cout << "Invalid input. Please enter a number within range 1-6: ";
+        }
+
+        cout << endl;
+
+        system(CLEAR_SCREEN);
+
+        switch (command)
+        {
+            case '1':
+                add();
+                break;
+            case '2':
+                view();
+                break;
+            case '3':
+                mark();
+                break;
+            case '4':
+                edit();
+                break;
+            case '5':
+                remove();
+                break;
+            case '6':
+                save_data();
+                return 0;
+        }
+    }
 }
 
 void add()
