@@ -93,6 +93,7 @@ int main()
                 remove();
                 break;
             case '6':
+                // Save all data before terminating program
                 save_data();
                 return 0;
         }
@@ -103,7 +104,20 @@ int main()
 
 void add()
 {
-    cout << "Add" << endl;
+    TodoItem task;
+
+    cout << "Enter task details: " << endl;
+
+    cout << "Title: ";
+    getline(cin, task.title);
+    cout << "Description: ";
+    getline(cin, task.description);
+    cout << "Due Date (YYYY-MM-DD): ";
+    getline(cin, task.due_date);
+
+    todo_items.push_back(task);
+
+    cout << "Task added successfully" << endl;
 }
 
 void view()
