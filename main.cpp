@@ -48,7 +48,7 @@ int main()
 
     while (true)
     {
-        // Instructions
+        // Show instructions
         cout << "1. Add Task" << endl;
         cout << "2. View Tasks" << endl;
         cout << "3. Mark Task as Completed" << endl;
@@ -61,7 +61,10 @@ int main()
         while (true)
         {
             cin >> command;
-            cin.ignore(INT_MAX, '\n'); // Flush stdin stream
+            /* Flush stdin stream to remove input "residue".
+               Only first character will be read, the rest 
+               of the line will be discarded. */
+            cin.ignore(INT_MAX, '\n');
             if (command >= '1' && command <= '6')
                 break;
             cout << "Invalid input. Please enter a number within range 1-6: ";
