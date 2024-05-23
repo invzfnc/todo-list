@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <climits>
+#include <cstdio>
 #include <vector>
 #include <regex>
 
@@ -107,13 +108,16 @@ void add()
 
 void view()
 {
+    int count = 1;
+
     cout << "All Tasks" << endl;
     for (const auto &item : todo_items)
     {
         cout << endl;
+        printf("%-3d", count++);
         cout << "Title: " << item.title << endl;
-        cout << "Desc: " << item.description << endl;
-        cout << "Due Date: " << item.due_date << endl;
+        cout << "   Desc: " << item.description << endl;
+        cout << "   Due Date: " << item.due_date << endl;
     }
 }
 
