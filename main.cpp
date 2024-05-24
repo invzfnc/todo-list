@@ -106,10 +106,15 @@ void add()
 {
     TodoItem task;
 
-    cout << "Enter task details: " << endl;
+    cout << "Enter task details: (Empty to abort operation)" << endl;
 
     cout << "Title: ";
     getline(cin, task.title);
+    if (task.title.empty())
+    {
+        cout << "Abort task." << endl;
+        return;
+    }
     cout << "Description: ";
     getline(cin, task.description);
     cout << "Due Date (YYYY-MM-DD): ";
