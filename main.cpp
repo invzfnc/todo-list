@@ -47,6 +47,9 @@ int main()
     char command;
     todo_items = retrieve_data();
 
+    // Clear screen on first run
+    system(CLEAR_SCREEN);
+
     while (true)
     {
         // Show instructions
@@ -98,7 +101,10 @@ int main()
                 return 0;
         }
 
-        cout << "\n---\n" << endl;
+        cout << "\nPress enter to continue ...";
+        cin.ignore(INT_MAX, '\n');
+
+        system(CLEAR_SCREEN);
     }
 }
 
@@ -106,7 +112,7 @@ void add()
 {
     TodoItem task;
 
-    cout << "Enter task details: (Empty to abort operation)" << endl;
+    cout << "Enter task details (Empty to abort operation): " << endl;
 
     cout << "Title: ";
     getline(cin, task.title);
