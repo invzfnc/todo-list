@@ -53,6 +53,7 @@ int main()
     while (true)
     {
         // Show instructions
+        cout << "-To Do List-" << endl;
         cout << "1. Add Task" << endl;
         cout << "2. View Tasks" << endl;
         cout << "3. Mark Task as Completed" << endl;
@@ -154,8 +155,57 @@ void mark()
 
 void edit()
 {
-    cout << "Edit" << endl;
+    int input_num;
 
+    while (true)
+    {
+        cout << "Enter task number to edit (0 to abort operation): ";
+
+        cin >> input_num;
+        cin.ignore(INT_MAX, '\n');
+
+        if (cin)
+        {
+            if (input_num == 0)
+            {
+                cout << "Abort task." << endl;
+                return;
+            }
+
+            if (input_num >= 1 && input_num <= todo_items.size())
+                break;
+    
+            cout << "Task number is out of range." << endl;
+            continue;
+        }
+        else 
+        {
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
+            cout << "What you've entered is not a number." << endl;
+            continue;
+        }
+    }
+
+    auto task = todo_items[input_num - 1];
+    
+    cout << "Enter task details (Empty to abort operation): " << endl;
+
+    cout << "Title " << "(was " << task.title <<  "): ";
+    getline(cin, task.title);
+    if (task.title.empty())
+    {
+        cout << "Abort task." << endl;
+        return;
+    }
+    cout << "Description: " << "(was " << task.description << "): ";
+    getline(cin, task.description);
+    cout << "Due Date (YYYY-MM-DD, was " << task.due_date << "): ";
+    getline(cin, task.due_date);
+
+    todo_items[input_num - 1] = task;
+
+    cout << "Task edited successfully" << endl;
 }
 
 void remove()
