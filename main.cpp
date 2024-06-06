@@ -36,6 +36,9 @@ void mark();
 void edit();
 void remove();
 
+// Tools
+int get_item_position(string);
+
 // File IO functions
 void save_data();
 TodoItems retrieve_data();
@@ -157,11 +160,45 @@ void mark()
 
 void edit()
 {
+    int item_position = get_item_position("edit");
+
+    if (item_position == -1) // Operation aborted
+        return;
+        
+    auto task = todo_items[item_position];
+    
+    cout << "Enter task details (Empty to abort operation): " << endl;
+
+    cout << "Title " << "(was " << task.title <<  "): ";
+    getline(cin, task.title);
+    if (task.title.empty())
+    {
+        cout << "Abort task." << endl;
+        return;
+    }
+    cout << "Description: " << "(was " << task.description << "): ";
+    getline(cin, task.description);
+    cout << "Due Date (YYYY-MM-DD, was " << task.due_date << "): ";
+    getline(cin, task.due_date);
+
+    todo_items[item_position] = task;
+
+    cout << "Task edited successfully" << endl;
+}
+
+void remove()
+{
+    cout << "Remove" << endl;
+
+}
+
+int get_item_position(string action)
+{
     int input_num;
 
     while (true)
     {
-        cout << "Enter task number to edit (0 to abort operation): ";
+        cout << "Enter task number to " << action << " (0 to abort operation): ";
 
         cin >> input_num;
         cin.ignore(INT_MAX, '\n');
@@ -171,7 +208,7 @@ void edit()
             if (input_num == 0)
             {
                 cout << "Abort task." << endl;
-                return;
+                return -1;
             }
 
             if (input_num >= 1 && input_num <= todo_items.size())
@@ -189,31 +226,7 @@ void edit()
         }
     }
 
-    auto task = todo_items[input_num - 1];
-    
-    cout << "Enter task details (Empty to abort operation): " << endl;
-
-    cout << "Title " << "(was " << task.title <<  "): ";
-    getline(cin, task.title);
-    if (task.title.empty())
-    {
-        cout << "Abort task." << endl;
-        return;
-    }
-    cout << "Description: " << "(was " << task.description << "): ";
-    getline(cin, task.description);
-    cout << "Due Date (YYYY-MM-DD, was " << task.due_date << "): ";
-    getline(cin, task.due_date);
-
-    todo_items[input_num - 1] = task;
-
-    cout << "Task edited successfully" << endl;
-}
-
-void remove()
-{
-    cout << "Remove" << endl;
-
+    return input_num - 1;
 }
 
 void save_data()
