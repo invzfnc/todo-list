@@ -154,8 +154,18 @@ void view()
 
 void mark()
 {
-    cout << "Mark" << endl;
+    int item_position = get_item_position("mark");
 
+    if (item_position == -1) // Operation aborted
+        return;
+
+    if (todo_items[item_position].completed)
+        cout << "Task is already marked as completed." << endl;
+    else
+    {
+        todo_items[item_position].completed = true;
+        cout << "Task marked as completed." << endl;
+    }
 }
 
 void edit()
