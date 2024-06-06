@@ -198,8 +198,27 @@ void edit()
 
 void remove()
 {
-    cout << "Remove" << endl;
+    int item_position = get_item_position("remove");
 
+    if (item_position == -1) // Operation aborted
+        return;
+
+    char choice;
+
+    cout << "Confirm to delete \"" << todo_items[item_position].title << "\"? [y/n]: ";
+    cin >> choice;
+
+    if (choice == 'y' || choice == 'Y')
+    {
+        todo_items.erase(todo_items.begin() + item_position);
+        cout << "Task deleted successfully." << endl;
+    }
+    else
+    {
+        cout << "Delete operation cancelled." << endl;
+    }
+
+    cin.ignore(INT_MAX, '\n');
 }
 
 int get_item_position(string action)
