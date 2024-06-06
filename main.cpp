@@ -22,6 +22,7 @@ struct TodoItem {
     string title;
     string description;
     string due_date;
+    bool completed = false;
 };
 
 // List containing item units
@@ -144,6 +145,7 @@ void view()
         cout << "Title: " << item.title << endl;
         cout << "   Desc: " << item.description << endl;
         cout << "   Due Date: " << item.due_date << endl;
+        cout << "   Completed: " << (item.completed ? "Yes" : "No") << endl;
     }
 }
 
@@ -224,7 +226,8 @@ void save_data()
     {
         fout << "\"" << item.title << "\","
             << "\"" << item.description << "\","
-            << "\"" << item.due_date << "\""
+            << "\"" << item.due_date << "\","
+            << "\"" << item.completed<< "\""
             << endl;
     }
 
@@ -239,7 +242,7 @@ TodoItems retrieve_data()
     ifstream file(DATA_PATH);
     string line;
 
-    regex pattern("\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\"");
+    regex pattern("\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\"");
     smatch matches;
 
     while (getline(file, line))
@@ -248,6 +251,9 @@ TodoItems retrieve_data()
         item.title = matches.str(1);
         item.description = matches.str(2);
         item.due_date = matches.str(3);
+        
+        item.completed = matches.str(4) == "1" ? true : false;
+
         items.push_back(item);
     }
 
