@@ -40,6 +40,7 @@ void remove();
 int get_item_position(string);
 bool is_leap_year(int);
 bool is_valid_date(string);
+string get_date_input();
 
 // File IO functions
 void save_data();
@@ -323,6 +324,25 @@ bool is_leap_year(int year)
         return false;
 }
 
+string get_date_input()
+{
+    string date_str;
+    int day, month, year;
+    stringstream result;
+
+    while (true)
+    {
+        getline(cin, date_str);
+        if (is_valid_date(date_str))
+            break;
+        cout << "Please enter a valid date." << endl;
+    }
+
+    sscanf(date_str.c_str(), "%d /%d /%d", &day, &month, &year);
+    result << day << "/" << month << "/" << year;
+
+    return result.str();
+}
 void save_data()
 {
     ofstream fout;
