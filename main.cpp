@@ -132,7 +132,7 @@ void add()
     cout << "Description: ";
     getline(cin, task.description);
     cout << "Due Date (YYYY-MM-DD): ";
-    getline(cin, task.due_date);
+    task.due_date = get_date_input();
 
     todo_items.push_back(task);
 
@@ -192,7 +192,7 @@ void edit()
     cout << "Description: " << "(was " << task.description << "): ";
     getline(cin, task.description);
     cout << "Due Date (YYYY-MM-DD, was " << task.due_date << "): ";
-    getline(cin, task.due_date);
+    task.due_date = get_date_input();
 
     todo_items[item_position] = task;
 
@@ -335,7 +335,7 @@ string get_date_input()
         getline(cin, date_str);
         if (is_valid_date(date_str))
             break;
-        cout << "Please enter a valid date." << endl;
+        cout << "Please enter a valid date: ";
     }
 
     sscanf(date_str.c_str(), "%d /%d /%d", &day, &month, &year);
