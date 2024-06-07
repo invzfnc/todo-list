@@ -29,7 +29,7 @@ struct TodoItem {
 typedef vector<TodoItem> TodoItems;
 
 // Function declarations
-// Commands functions
+// Main command functions
 void add();
 void view();
 void mark();
@@ -38,6 +38,8 @@ void remove();
 
 // Tools
 int get_item_position(string);
+bool is_leap_year(int);
+bool is_valid_date(string);
 
 // File IO functions
 void save_data();
@@ -256,6 +258,69 @@ int get_item_position(string action)
     }
 
     return input_num - 1;
+}
+
+bool is_valid_date(string date_str)
+{
+    int day, month, year;
+
+    // Extract day, month, year from date_str
+    int matches = sscanf(date_str.c_str(), "%d /%d /%d", &day, &month, &year);
+
+    // Proceed only if there are exactly three matches
+    if (matches != 3)
+        return false;
+
+    // Conditions: 
+    // 1. Year should not be a negative number
+    // 2. Month should be in range [1, 12]
+    // 3. Date should not exceed maximum days in that particular month
+    // 4. Rule 3, with an exception for second month if it is a leap year (28 -> 29)
+
+    if (year < 1) {
+        return false;
+    }
+
+    if (month < 1 || month > 12) {
+        return false;
+    }
+
+    // Array to match month with respective days
+    const int days_in_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    if (month == 2 && is_leap_year(year))
+    {
+        if (day > 29)
+            return false;
+    }
+    else
+    {
+        if (day > days_in_month[month - 1])
+            return false;
+    }
+
+    // Valid if all conditions are fulfilled
+    return true;
+}
+
+
+bool is_leap_year(int year)
+{
+    // Condition 1:
+    // Leap year if perfectly divisible by 400
+    // OR
+    // Condition 2:
+    // Leap year if not divisible by 100, AND
+    // Divisible by 4
+
+    if (year % 400 == 0)
+        return true;
+
+    else if (year % 100 != 0 && year % 4 == 0)
+        return true;
+
+    else
+        return false;
 }
 
 void save_data()
