@@ -275,8 +275,9 @@ bool is_valid_date(string date_str)
     // Conditions: 
     // 1. Year should not be a negative number
     // 2. Month should be in range [1, 12]
-    // 3. Date should not exceed maximum days in that particular month
-    // 4. Rule 3, with an exception for second month if it is a leap year (28 -> 29)
+    // 3. Date should be over 0
+    // 4. Date should not exceed maximum days in that particular month
+    // 5. Rule 3, with an exception for second month if it is a leap year (28 -> 29)
 
     if (year < 1) {
         return false;
@@ -288,6 +289,9 @@ bool is_valid_date(string date_str)
 
     // Array to match month with respective days
     const int days_in_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    if (day < 1)
+        return false;
 
     if (month == 2 && is_leap_year(year))
     {
