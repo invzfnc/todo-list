@@ -78,9 +78,50 @@ void edit();
 void remove();
 
 // Tools
-int get_item_position(string);
-bool is_leap_year(int);
+
+/**
+ *  @brief Gets the position of a task in the to-do list.
+ * 
+ *  This function prompts the user to enter the number of task they want to
+ *  interact with. It validates the input and returns the zero-based index of
+ *  the task in the `todo_items` vector.
+ * 
+ *  @param action A string indicating the action being performed (e.g., "edit").
+ *  @return The zero-based index of the task in the vector, or -1 if the
+ *  operation is aborted.
+ */
+int get_item_position(string action);
+
+/**
+ *  @brief Checks if a year is a leap year.
+ * 
+ *  This function determines if the given year is a leap year based on the
+ *  standard leap year rules.
+ * 
+ *  @param year The year to check.
+ *  @return `true` if the year is a leap year, `false` if otherwise.
+ */
+bool is_leap_year(int year);
+
+/**
+ *  @brief Validates a date string.
+ * 
+ *  This function checks if the given date string is in the format DD/MM/YYYY
+ *  and represents a valid date.
+ * 
+ *  @param date_str The date string to validate.
+ *  @return `true` if the date is valid, `false` if otherwise.
+ */
 bool is_valid_date(string);
+
+/**
+ *  @brief Prompts the user for a valid date input.
+ * 
+ *  This function continuously prompts the user to enter a date until a valid
+ *  date in the format DD/MM/YYYY is provided.
+ * 
+ *  @return A valid date string in the format DD/MM/YYYY.
+ */
 string get_date_input();
 
 // File IO functions
