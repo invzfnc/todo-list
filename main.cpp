@@ -279,38 +279,60 @@ void remove()
 
 int get_item_position(string action)
 {
+    // Hold user input for task position in todo_items vector
     int input_num;
 
     while (true)
     {
+        // Print customised prompt
         cout << "Enter task number to " << action << " (0 to abort operation): ";
 
         cin >> input_num;
+        // Clear buffer to prevent input issues
         cin.ignore(INT_MAX, '\n');
 
+        // If read successfully
         if (cin)
         {
+            // User chose to abort operation
             if (input_num == 0)
             {
                 cout << "Abort task." << endl;
+
+                // Return status code for operation abortion
                 return -1;
             }
 
+            // Input number is in valid range
             if (input_num >= 1 && input_num <= todo_items.size())
-                break;
+                break; // Move on to next step
     
             cout << "Task number is out of range." << endl;
+
+            // Continue prompting for input
             continue;
         }
+        // User entered non-numeric values
         else 
         {
+            // Clear error flag of cin
+            // to enable next input
             cin.clear();
+
+            // Clear buffer
             cin.ignore(INT_MAX, '\n');
+
+            // Inform user about incorrect input
             cout << "What you've entered is not a number." << endl;
+
+            // Continue prompting for input
             continue;
         }
     }
 
+    // Adjust offset by 1 before returning
+    // (User input starts at 1 while
+    // position in vectors starts at 0)
     return input_num - 1;
 }
 
