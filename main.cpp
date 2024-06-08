@@ -109,6 +109,16 @@ int main()
             case '6':
                 // Save all data before program termination
                 save_data();
+
+                // Closure of application
+                cout << "Thanks for using the application, have a nice day!" << endl;
+                cout << "Press enter to exit ...";
+                cin.ignore(INT_MAX, '\n');
+
+                // Cleanup
+                system(CLEAR_SCREEN);
+
+                // Terminate program
                 return 0;
         }
 
