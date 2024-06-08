@@ -132,8 +132,8 @@ void add()
     cout << "Title: ";
     getline(cin, task.title);
 
-    // Allow user to back out of operation if they no longer wish to
-    // continue
+    // Allow user to back out of operation if they no longer 
+    // wish to continue
     if (task.title.empty())
     {
         cout << "Abort task." << endl;
@@ -199,27 +199,42 @@ void mark()
 
 void edit()
 {
+    // Prompt user for position of task in todo_item
+    // vector to be edited
     int item_position = get_item_position("edit");
 
-    if (item_position == -1) // Operation aborted
+    // Status code for operation abortion
+    if (item_position == -1)
         return;
         
+    // Get selected task from todo_items vector
     auto task = todo_items[item_position];
     
     cout << "Enter task details (Empty to abort operation): " << endl;
 
+    // Print initial title of task for user reference
     cout << "Title " << "(was " << task.title <<  "): ";
     getline(cin, task.title);
+
+    // Allow user to back out of operation if they no longer 
+    // wish to continue
     if (task.title.empty())
     {
         cout << "Abort task." << endl;
         return;
     }
+
+    // Get updated decsription for selected task
     cout << "Description: " << "(was " << task.description << "): ";
     getline(cin, task.description);
+
+    // Get updated due date for selected task
     cout << "Due Date (YYYY-MM-DD, was " << task.due_date << "): ";
+
+    // Get and validate date input
     task.due_date = get_date_input();
 
+    // Replace original task details with updated task details
     todo_items[item_position] = task;
 
     cout << "Task edited successfully" << endl;
