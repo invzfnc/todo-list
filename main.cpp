@@ -461,7 +461,7 @@ void save_data()
         fout << "\"" << item.title << "\","
             << "\"" << item.description << "\","
             << "\"" << item.due_date << "\","
-            << "\"" << item.completed<< "\""
+            << "\"" << item.completed << "\""
             << endl;  // Indicates end of line/single entry
     }
 
@@ -472,28 +472,53 @@ void save_data()
 
 TodoItems retrieve_data()
 {
+    // Create object to hold the data of each task
     TodoItem item;
+    // Create vector object to store all tasks as a list
     TodoItems items;
 
+    // Create an ifstream object for file input
+    // and open file specified by DATA_PATH to read
     ifstream file(DATA_PATH);
+    // String variable to hold each line read from the file
     string line;
 
+    // Define a regualar expression pattern to match the CSV format fields
+    // Detailed explanation:
+    // - The pattern first matches a quote character (\"), zero or more
+    //   characters that are not quotes (([^\"]*)), a quote character (\"),
+    //   followed by a single comma character (,)
+    // - The pattern is repeated four times to match the four fields:
+    //   title, description, due_date, completed
     regex pattern("\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\"");
+
+    // Create smatch object to hold the matched results
     smatch matches;
 
+    // Loop through each line in the file
+    // Until it reaches the bottom (EOF, end of file)
     while (getline(file, line))
     {
+        // Use regex search to match the line against the defined pattern
         regex_search(line, matches, pattern);
+
+        // Extract the matched substrings and assign them
+        // to the corresponding fields in item struct
         item.title = matches.str(1);
         item.description = matches.str(2);
         item.due_date = matches.str(3);
         
+        // Convert the string "1" or "0" to a boolean type in C++
+        // and assign to .completed field/attribute
         item.completed = matches.str(4) == "1" ? true : false;
 
+        // Add item to the end of items list
         items.push_back(item);
     }
 
+    // Close the file and release resources
     file.close();
 
+    // Return the list of retrieved items
     return items;
 }
