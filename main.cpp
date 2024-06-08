@@ -410,19 +410,40 @@ string get_date_input()
     int day, month, year;
     stringstream result;
 
+    // Prompt until receives valid input
     while (true)
     {
+        // Get the whole line to parse
         getline(cin, date_str);
+
+        // Input has passed validation checking
         if (is_valid_date(date_str))
-            break;
+            break; // Continue onto next step
+
+        // Prompt for reenter
         cout << "Please enter a valid date: ";
     }
 
+    // Arguments breakdown for sscanf function call
+    // 1. Convert date_str from std::string to char* (C style string).
+    // 2. C style conversion specification: %d, stands for digits/numbers.
+    //    Second argument stands for "Match a digit, followed by zero or
+    //    more spaces, a slash character, space character(s), a single
+    //    slash, and a digit". This allows extraction of wanted information
+    //    from a string.
+    // 3. 3 pointers to 3 variables, holding the extracted day, month, and
+    //    year. Extracted digits will be assigned to these variables by
+    //    sscanf function.
+    //
     sscanf(date_str.c_str(), "%d /%d /%d", &day, &month, &year);
+
+    // Perform string concatenation for final result
     result << day << "/" << month << "/" << year;
 
+    // Convert to C++ style std::string and return
     return result.str();
 }
+
 void save_data()
 {
     ofstream fout;
