@@ -156,9 +156,15 @@ void add()
 
 void view()
 {
+    // Set counter
+    // Will be printed onto screen beside the task titles
     int count = 1;
 
+    // Print title of output
     cout << "All Tasks" << endl;
+
+    // Iterate over all items in todo_items vector
+    // and print their details onto screen
     for (const auto &item : todo_items)
     {
         cout << endl;
