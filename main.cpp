@@ -123,22 +123,32 @@ int main()
 
 void add()
 {
+    // Create object to store new task details
     TodoItem task;
 
     cout << "Enter task details (Empty to abort operation): " << endl;
 
+    // Title of new task
     cout << "Title: ";
     getline(cin, task.title);
+
+    // Allow user to back out of operation if they no longer wish to
+    // continue
     if (task.title.empty())
     {
         cout << "Abort task." << endl;
         return;
     }
+
+    // Description of new task
     cout << "Description: ";
     getline(cin, task.description);
+
+    // Due date of new task
     cout << "Due Date (YYYY-MM-DD): ";
     task.due_date = get_date_input();
 
+    // Add new task to todo_items vector
     todo_items.push_back(task);
 
     cout << "Task added successfully" << endl;
