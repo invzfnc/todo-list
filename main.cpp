@@ -446,19 +446,27 @@ string get_date_input()
 
 void save_data()
 {
+    // Create object for file output
     ofstream fout;
 
+    // Open file specified by DATA_PATH constant for output,
+    // in overwrite mode
     fout.open(DATA_PATH, ios::out);
 
+    // Loop through each item in todo_items vector
     for (const auto &item : todo_items)
     {
+        // Write item details to the file in CSV format
+        // with each field enclosed in quotes
         fout << "\"" << item.title << "\","
             << "\"" << item.description << "\","
             << "\"" << item.due_date << "\","
             << "\"" << item.completed<< "\""
-            << endl;
+            << endl;  // Indicates end of line/single entry
     }
 
+    // Close the file to ensure all data is written safely
+    // and release the resources
     fout.close();
 }
 
