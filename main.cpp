@@ -237,7 +237,7 @@ void add()
     getline(cin, task.description);
 
     // Due date of new task
-    cout << "Due Date (YYYY-MM-DD): ";
+    cout << "Due Date (DD/MM/YYYY): ";
     task.due_date = get_date_input();
 
     // Add new task to todo_items vector
@@ -321,7 +321,7 @@ void edit()
     getline(cin, task.description);
 
     // Get updated due date for selected task
-    cout << "Due Date (YYYY-MM-DD, was " << task.due_date << "): ";
+    cout << "Due Date (DD/MM/YYYY, was " << task.due_date << "): ";
 
     // Get and validate date input
     task.due_date = get_date_input();
