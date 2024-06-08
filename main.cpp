@@ -242,26 +242,38 @@ void edit()
 
 void remove()
 {
+    // Prompt user for position of task in todo_item
+    // vector to be removed
     int item_position = get_item_position("remove");
 
-    if (item_position == -1) // Operation aborted
+    // Status code for operation abortion
+    if (item_position == -1)
         return;
 
+    // Character to hold user's decision ([y]es or [n]o)
     char choice;
 
+    // Prompts user to enter choice
     cout << "Confirm to delete \"" << todo_items[item_position].title << "\"? [y/n]: ";
     cin >> choice;
 
+    // Consider both lower and upper case inputs
+    // Proceed as long as the choice starts with
+    // the 'y' character
     if (choice == 'y' || choice == 'Y')
     {
+        // Delete the selected task from todo_items vector
         todo_items.erase(todo_items.begin() + item_position);
         cout << "Task deleted successfully." << endl;
     }
+    // Confirmation failed
     else
     {
         cout << "Delete operation cancelled." << endl;
     }
 
+    // Clear buffer for next input to prevent input issues
+    // (Ignore leftover input from this point)
     cin.ignore(INT_MAX, '\n');
 }
 
