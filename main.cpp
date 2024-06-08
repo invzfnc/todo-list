@@ -125,12 +125,31 @@ bool is_valid_date(string);
 string get_date_input();
 
 // File IO functions
+
+/**
+ *  @brief Saves the current tasks to save file.
+ * 
+ *  This function writes all tasks in the `todo_items` vector to a CSV file
+ *  specified by `DATA_PATH` constant. Each task is saved in a single line
+ *  with fields enclosed in quotes.
+ */
 void save_data();
+
+/**
+ *  @brief Retrieves tasks from a file.
+ * 
+ *  This function reads tasks from the program save file specified by 
+ *  `DATA_PATH` constant and loads them into the `todo_items` vector. Each 
+ *  line in the file is parsed to extract task details.
+ *  
+ *  @return A vector of `TodoItem` containing all tasks read from the file.
+ */
 TodoItems retrieve_data();
 
 // Global storage object
 TodoItems todo_items;
 
+// Main program loop
 int main() 
 {
     char command;
