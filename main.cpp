@@ -52,6 +52,7 @@ TodoItems todo_items;
 int main() 
 {
     char command;
+    // Retrieve saved data from previous run, if any
     todo_items = retrieve_data();
 
     // Clear screen on first run
@@ -86,6 +87,7 @@ int main()
 
         system(CLEAR_SCREEN);
 
+        // Map commands to main function calls
         switch (command)
         {
             case '1':
@@ -104,14 +106,17 @@ int main()
                 remove();
                 break;
             case '6':
-                // Save all data before terminating program
+                // Save all data before program termination
                 save_data();
                 return 0;
         }
 
+        // Allow user to read the output before the program continues
         cout << "\nPress enter to continue ...";
         cin.ignore(INT_MAX, '\n');
 
+        // Remove clutter from previous output to improve readability
+        // and to focus on the next instructions
         system(CLEAR_SCREEN);
     }
 }
