@@ -31,10 +31,50 @@ typedef vector<TodoItem> TodoItems;
 
 // Function declarations
 // Main command functions
+
+/**
+ *  @brief Adds a new task to the to-do list.
+ *  
+ *  This function prompts the user to enter details for a new task,
+ *  including the title, description, and due date. If the user
+ *  provides valid input, the task is added to the `todo_items` vector.
+ */
 void add();
+
+/**
+ *  @brief Displays all tasks in the to-do list.
+ * 
+ *  This function iterates through the `todo_items` vector and prints
+ *  the detail of each task, including the title, description, due date,
+ *  status of completion.
+ */
 void view();
+
+/**
+ *  @brief Marks a task as completed.
+ *  
+ *  This function prompts the user to select a task by its position in
+ *  the `todo_items` vector. If the task is not already marked as completed,
+ *  it sets the task's `completed` attribute to true.
+ */
 void mark();
+
+/**
+ *  @brief Edits an existing task in the to-do list.
+ * 
+ *  This function prompts the user to select a task by its position in the
+ *  `todo_items` vector and then allows the user to modify the task's title, 
+ *  description, and due date. The task is updated with the new details.
+ */
 void edit();
+
+/**
+ *  @brief Removes a task from the to-do list.
+ *  
+ *  This function prompts the user to select a task by its position in
+ *  the `todo_items` vector and confirms the deletion. If confirmed, the task
+ *  is removed from the vector.
+ */
 void remove();
 
 // Tools
@@ -75,9 +115,9 @@ int main()
         while (true)
         {
             cin >> command;
-            /* Flush stdin stream to remove input "residue".
-               Only first character will be read, the rest 
-               of the line will be discarded. */
+            // Flush stdin stream to remove input "residue".
+            // Only first character will be read, the rest 
+            // of the line will be discarded.
             cin.ignore(INT_MAX, '\n');
             if (command >= '1' && command <= '6')
                 break;
