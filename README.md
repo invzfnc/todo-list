@@ -2,7 +2,7 @@
 
 This program is a highly portable command-line to-do-list application that helps users manage their tasks efficiently, with the functionality to store data on every run, and retrieve them upon restarting the application. It allows users to add new tasks, view existing tasks, mark tasks as completed, edit tasks and delete tasks.
 
-# Features
+## Features
 
 - Simple and straightforward usage
 - Highly portable
@@ -10,7 +10,7 @@ This program is a highly portable command-line to-do-list application that helps
 - Cross-platform compatibility
 - Non third-party dependencies
 
-# Setup
+## Setup
 
 To setup and run this project locally, follow these steps:
 
@@ -38,23 +38,23 @@ To setup and run this project locally, follow these steps:
     ./todolist
     ```
 
-# Usage
+## Usage
 
-## Adding tasks
+### Adding tasks
 ![Add](docs/add.gif)
 
-## Viewing tasks
+### Viewing tasks
 ![View](docs/view.gif)
 
-## Marking tasks as complete
+### Marking tasks as complete
 ![Mark](docs/mark.gif)
 
-## Editing tasks
+### Editing tasks
 ![Edit](docs/edit.gif)
 
-## Deleting tasks
+### Deleting tasks
 ![Delete](docs/delete.gif)
 
-# License
+## License
 
 This software is licensed under the [MIT License](https://github.com/eve-1010/todo-list/blob/main/LICENSE) © [Cha](https://github.com/eve-1010)
