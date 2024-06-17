@@ -1,3 +1,15 @@
+/* This program is a command-line to-do-list application that helps users
+ * manage their tasks efficiently. It allows users to add new tasks, view 
+ * existing tasks, mark tasks as completed, edit tasks and delete tasks. 
+ * It also provides functionality to save tasks to a CSV (Comma Separated
+ * Values) file and retrieve them upon restarting the application. This 
+ * program features the use of regular expressions for data extraction 
+ * and validation, along with utilisation of the CSV file format for 
+ * data storage to ensure the reusability of program. Additionally, this 
+ * program is designed to be cross-platform, with the ability to run on both 
+ * Windows and Unix-like systems (Linux and MacOS).
+ */
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -593,7 +605,7 @@ TodoItems retrieve_data()
     // String variable to hold each line read from the file
     string line;
 
-    // Define a regualar expression pattern to match the CSV format fields
+    // Define a regular expression pattern to match the CSV format fields
     // Detailed explanation:
     // - The pattern first matches a quote character (\"), zero or more
     //   characters that are not quotes (([^\"]*)), a quote character (\"),
