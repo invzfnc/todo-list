@@ -17,7 +17,7 @@ To setup and run this project locally, follow these steps:
 1. Download or clone the repository
 
     ```sh
-    git clone https://github.com/eve-1010/todo-list.git
+    git clone https://github.com/invzfnc/todo-list.git
     ```
 
 2. Compile the code
@@ -57,4 +57,4 @@ To setup and run this project locally, follow these steps:
 
 ## License
 
-This software is licensed under the [MIT License](https://github.com/eve-1010/todo-list/blob/main/LICENSE) © [Cha](https://github.com/eve-1010)
+This software is licensed under the [MIT License](https://github.com/invzfnc/todo-list/blob/main/LICENSE) © [Cha](https://github.com/invzfnc)
